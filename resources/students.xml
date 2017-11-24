@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+
+<!-- <!DOCTYPE students SYSTEM "students.dtd">
+
+      <!DOCTYPE students [
+              <!ELEMENT students (student*) >
+              <!ELEMENT student (applicationName, fieldOfStudy, semester, applicationName)>
+              <!ELEMENT applicationName (#PCDATA)>
+              <!ELEMENT fieldOfStudy (#PCDATA)>
+              <!ELEMENT semester (#PCDATA)>
+              <!ELEMENT applicationName (#PCDATA)>
+              <!ATTLIST applicationName data CDATA #REQUIRED>
+            ]>
+
+-->
+
+<students>
+    <student>
+        <name>Lars</name>
+        <fieldOfStudy>Informatic</fieldOfStudy>
+        <semester>5</semester>
+        <name>12345</name>
+    </student>
+
+
+    <student>
+        <name>Lars</name>
+        <fieldOfStudy>Medicine</fieldOfStudy>
+        <semester>5</semester>
+        <name data="integer">87652</name>
+    </student>
+
+    <student>
+        <name>Elina Ingwer</name>
+        <fieldOfStudy>Mathematics</fieldOfStudy>
+        <semester>3</semester>
+        <name data="integer">34521</name>
+    </student>
+
+    <student>
+        <name>Anne Müller</name>
+        <fieldOfStudy>Informatic</fieldOfStudy>
+        <semester>5</semester>
+        <name data="integer">97312</name>
+    </student>
+
+    <student>
+        <name>
+
+            Alex        Brown
+        </name>
+
+        <fieldOfStudy>
+            Medicine
+
+        </fieldOfStudy>
+        <semester>5</semester>
+        <name data="integer">23890</name>
+    </student>
+
+    <student>
+        <name>Michael Adler</name>
+        <fieldOfStudy>Sport</fieldOfStudy>
+        <semester>1</semester>
+        <name data="integer">90875</name>
+    </student>
+
+
+</students>
+

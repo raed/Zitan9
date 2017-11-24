@@ -1,0 +1,64 @@
+The IO-System
+*************
+
+The purpose of the classes in this package is to read data files, either from the local file system, or from URLs.
+Reading data files and getting the information into the internal structures is done in two steps:
+
+1. reading and parsing the raw data from the files.
+   The result is a data structure, which reflects the structure of the data, but not the meaning of the data.
+   For example, a csv-file is parsed and turned into a ArrayList<String[]>.
+2. Analysing the parsed data and integrating them into the system.
+   (not yet implemented).
+
+The first step is realised by the different Reader classes in this package.
+
+The main class is the class FileReader with the two methods:
+   DataBlock readFile(URL url, StringBuilder errors)
+   DataBlock readFile(File file, StringBuilder errors)
+
+These methods use the filename extension to determine the file type,
+for example .csv, .xml, .json etc.
+If the extension belongs to a known file type then the corresponding Reader class is called to parse the file.
+
+The reader classes must provide the following methods:
+
+  public static String getFilenameExtension()
+     which returns a regular expression for matching the filename extension, for example te?xt (which matches txt and text)
+
+  public static String getFileType()
+     which returns a keyword for identifying the file type, for example xml, json, text etc.
+
+  public ... readStream(HashMap<String,String> meta, String name, InputStream stream, long length, StringBuilder errors)
+     which actually reads the file and returns a (file-type dependent) object as result.
+  The parameters are:
+     meta:   some meta-information for the file (taken from the .meta file)
+     name:   the filename
+     stream: the open input stream (it will be closed automatically)
+     length: the length of the file in bytes, if known, otherwise -1
+     errors: for inserting error messages.
+
+Meta-file
+---------
+Each file may be accompanied by a .meta-file, i.e. the same name as the data file, but with extension .meta.
+This file is a key-value file with meta-information about the file.
+Some of the meta-information may be used for parsing.
+For example, the default separator for .csv files is ;.
+This can be changed in the .meta file, with an entry, for example 'separator = ,'
+
+Built-In Reader Classes
+-----------------------
+The following classes are (so far) built in:
+ - CSVFileReader      for reading .csv files. The result is ArrayList<String[]>.
+ - XMLFileReader      for reading .xml files. The result is org.w3c.dom.Document.
+ - JsonFileReader     for reading .json files. The result is javax.json.JsonObject.
+ - TextFileReader     for reading .text files. The result is a String.
+ - KeyValueFileReader for reading key-value files. The result is HashMap<String,String>
+
+Other Reader Classes
+--------------------
+Any number of further reader classes can be defined independently of the system and
+stored in a particular directory. The method
+public static boolean FileReader.readFileReaderClasses(File directory, String ignore, StringBuilder errors)
+loads all .class files in the given directory and makes them available as FileReader.
+The only condition is that they implement the above mentioned three methods.
+

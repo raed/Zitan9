@@ -8,6 +8,8 @@
         <outputRelativeToContentRoot value="true" />
         <module name="AccessManagement" />
         <module name="Concept" />
+        <module name="Database" />
+        <module name="DSL" />
         <module name="Network" />
         <module name="RuleEngine" />
         <module name="Utils" />
@@ -16,6 +18,8 @@
     <bytecodeTargetLevel>
       <module name="AccessManagement" target="1.5" />
       <module name="Concept" target="1.5" />
+      <module name="Database" target="1.5" />
+      <module name="DSL" target="1.5" />
       <module name="IO" target="1.8" />
       <module name="Network" target="1.5" />
       <module name="RuleEngine" target="1.5" />

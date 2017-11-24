@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AccessManagement/AccessManagement.iml" filepath="$PROJECT_DIR$/AccessManagement/AccessManagement.iml" />
       <module fileurl="file://$PROJECT_DIR$/Concept/Concept.iml" filepath="$PROJECT_DIR$/Concept/Concept.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DSL/DSL.iml" filepath="$PROJECT_DIR$/DSL/DSL.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Database/Database.iml" filepath="$PROJECT_DIR$/Database/Database.iml" />
       <module fileurl="file://$PROJECT_DIR$/Network/Network.iml" filepath="$PROJECT_DIR$/Network/Network.iml" />
       <module fileurl="file://$PROJECT_DIR$/RuleEngine/RuleEngine.iml" filepath="$PROJECT_DIR$/RuleEngine/RuleEngine.iml" />
       <module fileurl="file://$PROJECT_DIR$/Utils/Utils.iml" filepath="$PROJECT_DIR$/Utils/Utils.iml" />

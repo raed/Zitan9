@@ -32,7 +32,7 @@ public class TimeInterval extends Interval<LocalDateTime> {
     public TimeInterval(AbsoluteTimePoint from, AbsoluteTimePoint to) {
         super((LocalDateTime)from.get(), (LocalDateTime)to.get());}
     
-    // ES FEHLT NOCH EIN KONSTRUKTOR FÜR DAS INTERVALL ZWISCHEN RELATIVEN ZEITPUNKTEN
+    // ES FEHLT NOCH EIN KONSTRUKTOR Fuer DAS INTERVALL ZWISCHEN RELATIVEN ZEITPUNKTEN
     
     /** parses a string "from - to" to a TimeIntervalObject
      * 

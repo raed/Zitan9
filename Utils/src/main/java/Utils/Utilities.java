@@ -899,8 +899,8 @@ public class Utilities {
      */
     static int[] easter(int year) {
         int a, b, c, d, e, p, q, r, x, y, day, month ;
-        //Es geht um die Berechnung der Größen d und e
-        //Dazu braucht man die 9 Hilfsgrößen a, b, c, p, n, q, r, x, y !!
+        //Es geht um die Berechnung der Groessen d und e
+        //Dazu braucht man die 9 Hilfsgroessen a, b, c, p, n, q, r, x, y !!
         p = year/100 ;
         q = p/3 ;       r = p/4 ;
         x = (15+p-q-r)%30 ;     y = (4+p-r)%7 ;
@@ -911,7 +911,7 @@ public class Utilities {
             day=19; month=4;}
         else if (d==28 && e==6){ //=> Ostern am 18.April
             day=18; month=4;}
-        else if (22+d+e < 32) { //ansonsten gilt Ostern am (22+d+e).März
+        else if (22+d+e < 32) { //ansonsten gilt Ostern am (22+d+e).Maerz
             day=22+d+e; month=3;}
         else{day=d+e-9; month=4;} // =>  Ostern am (d+e-9).April
         return new int[]{year,month,day};}
@@ -925,8 +925,8 @@ public class Utilities {
     static int[] pentecost(int year) {
         int a, b, c, d, e, p, q, r, x, y, day, month;
         int pday, pmonth ;
-        //Es geht um die Berechnung der Größen d und e
-        //Dazu braucht man die 9 Hilfsgrößen a, b, c, p, n, q, r, x, y !!
+        //Es geht um die Berechnung der Groessen d und e
+        //Dazu braucht man die 9 Hilfsgroessen a, b, c, p, n, q, r, x, y !!
         p = year/100 ;
         q = p/3 ;       r = p/4 ;
         x = (15+p-q-r)%30 ;     y = (4+p-r)%7 ;
@@ -937,7 +937,7 @@ public class Utilities {
             day=19; month=4;}
         else if (d==28 && e==6){// Ostern am 18.April
             day=18; month=4;}
-        else if (22+d+e < 32){ //ansonsten gilt Ostern am (22+d+e).März
+        else if (22+d+e < 32){ //ansonsten gilt Ostern am (22+d+e). Maerz
             day=22+d+e; month=3;}
         else{// =>  Ostern am (d+e-9).April
             day=d+e-9; month=4;}

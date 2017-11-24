@@ -361,7 +361,7 @@ public class ConceptAttribute extends Attribute implements Serializable {
             inverse = (ConceptAttribute)Context.currentContext.getAttribute(inverseName);
             if(inverse == null) {setInverse(inverseName,Context.currentContext,null);}}}
 
-    /**Überarbeiten */
+    /** Uebrarbearbeiten */
     public static boolean checkSpecification(HashMap<String,ArrayList<String>> specifications, String name, Namespace namespace, Context context, StringBuilder errors) {
         ArrayList<String> domains = specifications.get("domain");
         ArrayList<String> ranges = specifications.get("range");

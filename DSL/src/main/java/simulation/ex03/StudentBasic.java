@@ -1,7 +1,7 @@
-package simulation.ex02;
+package simulation.ex03;
 
 import simulation.ex01.PersonBasic;
-import simulation.ex03.VorlesungBase;
+import simulation.ex02.VorlesungBase;
 
 import java.util.List;
 
@@ -83,3 +83,31 @@ public class StudentBasic {
 
     }
 }
+
+
+    /*   Von Concept Framework: Concpet und DAG<Concept>  */
+// ===================================================
+
+// 1) create a Concept with Id = StudentBasic,
+// 2) add the StudentBasic to the DAG<Concept>
+// 3) create an Edge : PersonBasic -> StudentBasic
+// 3) create an Edge : StudentBasic -> VorlesungBasic
+
+
+   /*   Von Concept Framework: Attribute und DAG<Attribute>  */
+// ===================================================
+
+// 1) create a Data-attribute "matrikelnummer"
+// 2) add the DataAttribute to the DAG<Attribute>
+// 3) Was ist mit den Properties??
+
+// What is now with the VorlesungBasic??
+// It is an attribute of StudentBasic !!
+// Should it be added to DAG<Attribute> ???
+
+
+
+
+
+
+

@@ -1,0 +1,10 @@
+package simulation.ex06
+
+
+concept Lehrstuehl {
+
+   name : string
+
+   partOf : range Institut | transitive
+
+}

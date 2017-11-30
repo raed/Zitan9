@@ -1,0 +1,7 @@
+
+concept Institut {
+
+        name : string
+        partOf :  range University |  transitive   //  conceptAttribute
+
+}

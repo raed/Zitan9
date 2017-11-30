@@ -1,16 +1,14 @@
-package simulation.ex03;
+package simulation.ex04;
 
-public class VorlesungBase {
+public class UniversityBase {
 
     private String name;
 
-    public VorlesungBase(){
 
-    }
-
-    public VorlesungBase(String name) {
+    public UniversityBase(String name) {
         this.name = name;
     }
+
 
     public String getName() {
         return name;
@@ -19,4 +17,6 @@ public class VorlesungBase {
     public void setName(String name) {
         this.name = name;
     }
+
+
 }

@@ -1,0 +1,8 @@
+
+package simulation.exe4
+
+concept University {
+
+ name : string  // Example LMU
+
+}

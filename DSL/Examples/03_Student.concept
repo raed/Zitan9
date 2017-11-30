@@ -1,0 +1,10 @@
+package simulation.ex02
+import simulation.ex01
+
+
+concept Student includes Person {
+
+    matrikelnummer : int
+    belegtVorlesung : range = Vorlesung | non-functional // ConceptAttribute
+
+}

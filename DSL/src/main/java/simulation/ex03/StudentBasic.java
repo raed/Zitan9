@@ -7,13 +7,10 @@ import java.util.List;
 
 public class StudentBasic {
 
-
     private int matrikelnummer;
-
 
     // Generated from Include
     private PersonBasic person;
-
 
     public StudentBasic(int matrikelnummer, PersonBasic person) {
         this.matrikelnummer = matrikelnummer;
@@ -34,8 +31,6 @@ public class StudentBasic {
 
     }
 
-
-
     // Erweiterung um ConceptAttribute
     private List<VorlesungBase> belegteVorlesungList;
 
@@ -49,11 +44,9 @@ public class StudentBasic {
     public boolean add(VorlesungBase vorlesungBase){
         return belegteVorlesungList.add(vorlesungBase);
     }
-
     public boolean remove(VorlesungBase vorlesungBase){
         return belegteVorlesungList.remove(vorlesungBase);
     }
-
 
     public List<VorlesungBase> getBelegteVorlesungList() {
         return belegteVorlesungList;

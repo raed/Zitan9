@@ -1,0 +1,44 @@
+Some general thoughts behind the package AbstractObjects
+******************************************************
+
+The package AbstractObjects contains interfaces and classes which are independent of
+concrete data structures for individualConcepts and attributes.
+The main purpose is to allow for different concrete implementations with different level of detail.
+For example, a repository may need only some information about individualConcepts and classes,
+whereas the servers and clients may need a lot more detail.
+
+The RQL-J System maintains objects and attributes for the object.
+The objects are either abstract individualConcepts like "Person", "Lecture",
+or concrete data objects, like numbers, strings etc.
+
+The attributes are either binary relations between individualConcepts,
+or relations or functions mapping individualConcepts to concrete data object.
+
+Interface DataObject:
+This is the top-interface for abstract individualConcepts and concrete data objects
+
+There are two sub-interfaces:
+ - ConceptObject  (for abstract individualConcepts like "Person", "Lecture" etc.)
+ - ConcreteObject (for all concrete data types like Integer, String, intervals, time points).
+
+ConceptObjects and Attributes can have different ways to denote them.
+In particular they can be denoted by an identifier.
+In logical terms, there is the syntactic level and the semantic level.
+In our implementation the syntactic level is usually given by the identifiers,
+which are just strings, and the semantic level is given by corresponding Java classes.
+The mapping from the syntactic level to the semantic level is done by means
+of a so called interpretation.
+
+Therefore this package contains an interface Interpration as well as a class "StringInterpretation".
+The StringInterpretation-class maps strings to corresponding Java objects.
+
+Both, DataObjects and Attributes can be treated as sets (maybe just singleton sets).
+Therefore they implement the interface SemanticSet.
+The SemanticSet interface demands the methods "isSubset", "isDisjoint" and "isOverlapping".
+These methods have as extra arguments an interpretation.
+This way one can write algorithms which can be parameterized with interpretations.
+
+
+
+
+

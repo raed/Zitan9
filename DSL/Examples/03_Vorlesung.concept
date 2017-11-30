@@ -1,0 +1,7 @@
+package simulation.exe03
+
+concept Vorlesung {
+
+  String : name ;
+
+}

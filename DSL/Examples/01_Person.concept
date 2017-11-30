@@ -1,0 +1,9 @@
+package simulation.exe1
+
+
+concept Person base {
+
+
+  String : name;
+
+}

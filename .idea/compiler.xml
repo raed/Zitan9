@@ -16,15 +16,15 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="AccessManagement" target="1.5" />
-      <module name="Concept" target="1.5" />
-      <module name="Database" target="1.5" />
-      <module name="DSL" target="1.5" />
+      <module name="AccessManagement" target="1.9" />
+      <module name="Concept" target="1.9" />
+      <module name="Database" target="1.9" />
+      <module name="DSL" target="1.9" />
       <module name="IO" target="1.8" />
-      <module name="Network" target="1.5" />
-      <module name="RuleEngine" target="1.5" />
-      <module name="Utils" target="1.5" />
-      <module name="Zitan9" target="1.5" />
+      <module name="Network" target="1.9" />
+      <module name="RuleEngine" target="1.9" />
+      <module name="Utils" target="1.9" />
+      <module name="Zitan9" target="1.9" />
     </bytecodeTargetLevel>
   </component>
 </project>

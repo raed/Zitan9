@@ -1,0 +1,39 @@
+grammar org.xtext.example.mydsl.MyDsl with org.eclipse.xtext.xbase.Xbase
+generate myDsl "http://www.xtext.org/example/mydsl/MyDsl"
+import "http://www.eclipse.org/xtext/common/JavaVMTypes" as types
+
+Model:
+	'package' name=FQN
+	importSection=XImportSection?
+	elements+=Element*;
+
+Element:
+	Class | Query ;
+
+Query:
+	'query' name=ID ':=' class=JvmTypeReference 'with'
+	criterias+=Criteria ('and' criterias+=Criteria)* ;
+
+Criteria:
+	feature=[types::JvmOperation] '==' value=XLiteral	;
+
+SimpleLiteral:
+	STRING | INT ;
+
+Class:
+	'class' name=ID ('includes' includes+=JvmTypeReference (',' includes+=JvmTypeReference)*)? '{'
+		features+=Feature
+	'}' ;
+
+Feature:
+	Attribute | Operation ;
+
+Attribute:
+	name=ValidID ':' type=JvmTypeReference;
+
+Operation:
+	'op' returnType=JvmTypeReference name=ValidID '(' (params+=JvmFormalParameter (',' params+=JvmFormalParameter)*)?')'
+	body = XBlockExpression ;
+
+FQN:
+    ID ('.' ID)* ;

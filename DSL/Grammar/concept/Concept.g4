@@ -3,24 +3,23 @@ grammar Concept;
 
 concepts : concept* ;
 
-concept :  ID
-        |  compilationUnit ;
+concept :  compilationUnit ;
 
 
 compilationUnit : (packageSpec)? conceptDefinition ;
 
-packageSpec : 'package' ID ';'  ;
+packageSpec : 'package' Identifier ';'  ;
 
-conceptDefinition : 'class' ID (relationClausel)? (impelementsClausel)? classBody ;
+conceptDefinition : 'concpet' Identifier (relationClausel)? (impelementsClausel)? classBody ;
 
 relationClausel  : inheritance
                  | composition
                  ;
 
- inheritance : 'extends' ID ;
- composition : 'includes' ID (',' 'includes' ID) * ;
+ inheritance : 'extends' Identifier ;
+ composition : 'includes' Identifier (',' 'includes' Identifier) * ;
 
- impelementsClausel : 'implements' ID (',' ID) * ;
+ impelementsClausel : 'implements' Identifier (',' Identifier) * ;
 
  classBody : '{' features '}' ;
 
@@ -44,14 +43,14 @@ attributeArt : dataAttribute
              ;
 
 
-dataAttribute : ID ':' type ('property' '=' 'functional') ;
+dataAttribute :  ':' type ('property' '=' 'functional') ;
 
 type : javaType
      | concreteDomain
      | enumeration
      ;
 
-javaType :  ;      // toDo allow java types
+javaType :  Identifier ;      // toDo allow java types
 concreteDomain : atomicType | setType ; // all wrapper types from the concept framework
 atomicType : 'AbsoluteTimePoint'
            | 'BooleanObject'
@@ -84,11 +83,11 @@ setType    : 'BoundedTimeInterval'
            ;
 
 
- enumeration :  ; // @toDo grammar for enumeration definition
+ enumeration :  Identifier ; // @toDo grammar for enumeration definition
 
 
 
-conceptAttribute : ID ':' ('domain' '=' ID)? '->' ('range' '=' ID) ('is' property)? ;
+conceptAttribute : Identifier ':' ('domain' '=' Identifier)? '->' ('range' '=' Identifier) ('is' property)? ;
 property : 'functional'
          | 'transitive'
          | 'semmetric'
@@ -110,14 +109,14 @@ aggregatingAttribute : 'start' '=' VALUE 'aggregatier' '=' expr  'finalizer' '='
 
 // toDo expr must be extended
 
-expr:   ID '(' exprList? ')'    // func call like f(), f(x), f(1,2)
-    |   ID '[' expr ']'         // array index like a[i], a[i][j]
+expr:   Identifier '(' exprList? ')'    // func call like f(), f(x), f(1,2)
+    |   Identifier '[' expr ']'         // array index like a[i], a[i][j]
     |   '-' expr                // unary minus
     |   '!' expr                // boolean not
     |   expr '*' expr
     |   expr ('+'|'-') expr
     |   expr '==' expr          // equality comparison (lowest priority op)
-    |   ID                      // variable reference
+    |   Identifier                      // variable reference
     |   INT
     |   '(' expr ')'
     ;
@@ -128,7 +127,7 @@ exprList : expr (',' expr)* ;   // arg list
 
 
 
-operation : 'op' returnType ID '(' formalParameters? ')' block  ; // "void f(int x) {...}"
+operation : 'op' returnType Identifier '(' formalParameters? ')' block  ; // "void f(int x) {...}"
 returnType : 'void'
            | type
            ;
@@ -139,7 +138,7 @@ formalParameters
     ;
 
 formalParameter
-        :   type ID
+        :   type Identifier
         ;
 
 
@@ -172,9 +171,34 @@ DIGIT       :   [0-9] ;
  *  ('_') or digits ([0-9]), not beginning with a digit"
  */
 
- ID : LETTER (LETTER|DIGIT)*;
- fragment
- LETTER      :   [a-zA-Z\u0080-\u00FF_] ;
+
+Identifier
+	:	JavaLetter JavaLetterOrDigit*
+	;
+
+fragment
+JavaLetter
+	:	[a-zA-Z$_] // these are the "java letters" below 0x7F
+	|	// covers all characters above 0x7F which are not a surrogate
+		~[\u0000-\u007F\uD800-\uDBFF]
+		{Character.isJavaIdentifierStart(_input.LA(-1))}?
+	|	// covers UTF-16 surrogate pairs encodings for U+10000 to U+10FFFF
+		[\uD800-\uDBFF] [\uDC00-\uDFFF]
+		{Character.isJavaIdentifierStart(Character.toCodePoint((char)_input.LA(-2), (char)_input.LA(-1)))}?
+	;
+
+fragment
+JavaLetterOrDigit
+	:	[a-zA-Z0-9$_] // these are the "java letters or digits" below 0x7F
+	|	// covers all characters above 0x7F which are not a surrogate
+		~[\u0000-\u007F\uD800-\uDBFF]
+		{Character.isJavaIdentifierPart(_input.LA(-1))}?
+	|	// covers UTF-16 surrogate pairs encodings for U+10000 to U+10FFFF
+		[\uD800-\uDBFF] [\uDC00-\uDFFF]
+		{Character.isJavaIdentifierPart(Character.toCodePoint((char)_input.LA(-2), (char)_input.LA(-1)))}?
+	;
+
+
 
 
 WS  :   [ \t\n\r]+ -> skip ;

@@ -1,0 +1,14 @@
+HexLiteral=1
+DecimalLiteral=2
+OctalLiteral=3
+FloatingPointLiteral=4
+CharacterLiteral=5
+StringLiteral=6
+ENUM=7
+ASSERT=8
+Identifier=9
+COMMENT=10
+WS=11
+LINE_COMMENT=12
+'enum'=7
+'assert'=8

@@ -63,7 +63,6 @@ conceptBody
  attribute
 		: dataAttribute
 		| conceptAttribute
-		| chainAttribute
 		;
 
 
@@ -73,15 +72,8 @@ dataAttribute
 
 
 conceptAttribute
-         : Identifier ':' range propertyList? 'dag'?
+         : Identifier ':' range
 		 ;
-
-
-//toDo
-chainAttribute
-        : conceptAttribute ('concat' conceptAttribute)+
-        ;
-
 
 range
 	: 'range' referenceType
